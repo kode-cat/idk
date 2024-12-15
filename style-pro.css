@@ -1,0 +1,136 @@
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/resources/fonts/Quicksand.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', san-serif;
+}
+
+body {
+    margin: 0 auto;
+    color: white;
+    background-color: #16161a;
+    margin-top: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top:30px;
+    color:white;
+}
+
+#info,#high-score-wrap {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto 10px;
+}
+
+#info p:first-child {
+    display: inline-block;
+}
+
+#info p:last-child {
+    float: right;
+}
+
+
+/*========================================================
+          Quiz Section
+========================================================*/
+#quiz-area {
+    width: 90%;
+    max-width: 500px;
+    margin: 10px auto;
+    background-color: darkorange;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+button {
+    font-family: "Quicksand", sans-serif;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    color: #FFFFFF;
+    background-color: #2cb67d;
+    width: 100%;
+    margin: 0px auto;
+    margin-top: 30px;
+    display: block;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover, button:focus {
+    background: #DCB239;
+}
+
+button:active {
+    background: #1b744f;
+}
+
+
+
+/*Form area width*/
+.form-area, ul {
+  margin: 0px auto;
+  max-width: 550px;
+}
+
+/*formatting answers*/
+li {
+  list-style-type: none;
+  text-align: left;
+  background-color: transparent;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #94a1b2;
+}
+
+/*Change effect of question when the questions is selected*/
+.selected, .selected:hover {
+  background: #16161a;
+}
+
+/*change correct answer background*/
+.correct, .correct:hover {
+  background: #2cb67d;
+  color: white;
+}
+
+/*change wrong answer background*/
+.wrong, .wrong:hover {
+  background: #e16162;
+  color: white;
+}
+
+/*========================================================
+        Submit Button
+========================================================*/
+
+/*next question button*/
+.next, .next:hover, .next:active {
+    background: #E67E22;
+}
+
+
+
+/*========================================================
+        Results
+========================================================*/
+#result {
+    text-align: center;
+}
+
