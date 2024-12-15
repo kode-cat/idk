@@ -83,9 +83,6 @@ const questionTitle = document.getElementById('question');
 const result = document.getElementById("result");
 const classHighlight = 'selected';
 
-//self calling function
-showQuestions();
-
 
 // Display Answers and hightlight selected item
 //------------------------------------------------------------------
@@ -230,3 +227,6 @@ function showResults() {
 function try_again() {
     location.reload();
 }
+ function promote() {
+    location.replace("https://kode-cat.github.io/phy/quiz-pro.html");
+ }
