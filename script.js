@@ -213,14 +213,20 @@ const high_score = ()=>{
 //------------------------------------------------------------------
 function showResults() {
   if (score == 100) {
-    promotion = '<button onclick="promote();">Try PRO Level</button>';
+    message = "Congratulations 🎉";
+    promotion = '<button onclick="promote();">Try PRO Level</button> <button onclick="try_again()">Try Again</button>';
   } else {
-    promotion = '<button>Try Again</button>  <button onclick="promote();">Yet Try PRO Level</button>';
+    message = "Try Again";
+    promotion = '<button onclick="try_again()">Try Again</button> <button onclick="promote();">Yet Try PRO Level</button>';
   }
   
-  result.innerHTML = `You scored ${correctAns} out of ${currentIndex} correctly <br /> You scored ${score} points <br /><br /> ${promotion}`;
+  result.innerHTML = `<h2>${message}</h2> You scored ${correctAns} out of ${currentIndex} correctly <br /> You scored ${score} points <br /><br /> ${promotion}`;
 
   button.style.display = "none";
   
   high_score();
     }
+
+function try_again() {
+    location.reload();
+}
