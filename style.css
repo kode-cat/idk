@@ -23,7 +23,7 @@ h1 {
     color:white;
 }
 
-#info {
+#info,#high-score-wrap {
     width: 90%;
     max-width: 500px;
     margin: 20px auto 10px;
@@ -35,10 +35,6 @@ h1 {
 
 #info p:last-child {
     float: right;
-}
-
-#high-score-wrap {
-    margin: 10px;
 }
 
 /*========================================================
