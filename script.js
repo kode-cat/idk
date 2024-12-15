@@ -1,4 +1,5 @@
 let score = 0;
+document.getElementById("high-score").innerText = localStorage.getItem("hs");
 // Creating questionss and answers
 //*****************************************************************************
 // Unlocks for questions and answers
@@ -199,8 +200,10 @@ function checkAnswer() {
 // Highest score
 //------------------------------------------------------------------
 const high_score = ()=>{
-    let hs = localStorage.setItem('hs',score);
-    if (localStorage.getItem('hs') < score) {
+    if (!localStorage.getItem('hs')) {
+      localStorage.setItem('hs',0);
+    } 
+    else if(localStorage.getItem('hs') < score) {
         localStorage.setItem('hs',score);
     }
     document.getElementById("high-score").innerText = localStorage.getItem("hs");
