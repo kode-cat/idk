@@ -228,5 +228,5 @@ function try_again() {
     location.reload();
 }
  function promote() {
-    location.replace("https://kode-cat.github.io/phy/quiz-pro.html");
+    location.replace("https://kode-cat.github.io/physics/quiz-pro.html");
  }
