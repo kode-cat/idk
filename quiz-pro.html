@@ -1,34 +1,339 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style-pro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound PRO Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+            font-family: 'Quicksand';
+            src: url('/resources/fonts/Quicksand.ttf');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            background-color: #16161a;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #FFDA44; /* Bright color for contrast */
+        }
+
+        #info, #high-score-wrap {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 500px;
+            margin: 10px auto;
+            font-size: 1.2rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        #quiz-area {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px auto;
+            background-color: #FFA500; /* Dark orange */
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            font-family: "Quicksand", sans-serif;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            color: #FFFFFF;
+            background-color: #2cb67d;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 -3px 5px rgba(255, 255, 255, 0.2);
+        }
+
+        button:active {
+            background-color: #1b744f; /* Darker shade on click */
+            transform: translateY(4px); /* Move down on click */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 -3px 5px rgba(255, 255, 255, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: transparent;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background: #94a1b2; /* Highlight on hover */
+        }
+
+        .selected, .selected:hover {
+            background: #16161a; /* Selected answer style */
+        }
+
+        .correct {
+            background: #2cb67d; /* Correct answer style */
+            color: white;
+        }
+
+        .wrong {
+            background: #e16162; /* Wrong answer style */
+            color: white;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem; /* Smaller heading on mobile */
+            }
+
+            #info, #high-score-wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #info p, #high-score-wrap p {
+                margin: 5px 0; /* Spacing adjustment */
+            }
+        }
+    </style>
 </head>
 <body onload="showQuestions();">
     <h1>Sound PRO Quiz!!</h1>   
-    
-    <!-- Number of questions  -->
+
     <div id="info">
         <p>
-            <span id="quizNumber">1</span>/<span id="totalQuiz">1</span>
+            <span id="quizNumber">1</span>/<span id="totalQuiz">10</span>
         </p>
         <p>
             Points: <span id="points">0</span>
         </p>
     </div>
-    
+
     <div id="quiz-area">
-        <!-- Quiz question -->
         <p id="question"></p>
         <ul id="answer"></ul>
-
         <div id="result"></div>
-
         <button id="submit">Submit</button>
     </div>
 
     <div id="high-score-wrap">
-      highest score: <span id="high-score">0</span>
+        highest score: <span id="high-score">0</span>
     </div>
-    <script src="script-pro.js"></script>
+
+    <script>
+        let score = 0;  // Initialize score
+        document.getElementById("high-score").innerText = localStorage.getItem("hs") || 0;  // Display high score
+
+        // Defining the questions and answers
+        const questions = [
+            {
+                question: "1. When you hear thunder after seeing lightning, why does this happen?",
+                answers: ["Sound travels faster than light", "Light travels faster than sound", "They occur simultaneously", "Thunder is a type of light"],
+                correct: 1
+            },
+            {
+                question: "2. Why do you hear your voice differently when recorded compared to when you speak?",
+                answers: ["The recording device alters the sound", "You hear your voice through vibrations in your skull", "The environment changes the sound", "Your ears are not functioning properly"],
+                correct: 1
+            },
+            {
+                question: "3. Why do we perceive a sound as 'louder' when we are closer to the source?",
+                answers: ["Sound waves travel faster at shorter distances", "The amplitude of sound waves increases with distance", "Sound waves spread out and lose energy as they travel", "Our ears become more sensitive at closer distances"],
+                correct: 2
+            },
+            {
+                question: "4. Why do you hear a 'pop' sound when you open a soda can?",
+                answers: ["The can is under high pressure", "The sound is produced by the liquid", "The can is made of metal", "The carbonation is escaping slowly"],
+                correct: 0
+            },
+            {
+                question: "5. Why do some people find it difficult to hear conversations in a crowded room?",
+                answers: ["Sound waves are blocked by other people", "The brain cannot process multiple sounds at once", "Sound waves lose energy in a crowd", "High-frequency sounds are absorbed by the crowd"],
+                correct: 1
+            },
+            {
+                question: "6. Why does a dog seem to hear sounds that humans cannot?",
+                answers: ["Dogs have better hearing abilities", "Dogs can hear higher frequencies than humans", "Dogs are more sensitive to vibrations", "All of the above"],
+                correct: 3
+            },
+            {
+                question: "7. Why do we often hear echoes in large, empty spaces like canyons?",
+                answers: ["Sound travels faster in open spaces", "Sound waves bounce off hard surfaces", "There are fewer obstacles to absorb sound", "The air is less dense in canyons"],
+                correct: 1
+            },
+            {
+                question: "8. Why does music sound different when played through headphones compared to speakers?",
+                answers: ["Headphones amplify sound differently", "Speakers produce sound waves that fill a room", "Headphones only transmit certain frequencies", "The position of the listener affects sound perception"],
+                correct: 1
+            },
+            {
+                question: "9. Why do we sometimes hear a 'ringing' in our ears after a loud concert?",
+                answers: ["The ears are damaged from loud sounds", "The brain is processing sound incorrectly", "The sound waves are still vibrating in the air", "It is a sign of hearing loss"],
+                correct: 0
+            },
+            {
+                question: "10. Why do you hear a 'thud' when you drop a heavy object on the floor?",
+                answers: ["The object is too heavy for the floor", "The sound is produced by the object hitting the floor", "The floor absorbs the sound", "The air pressure changes when the object falls"],
+                correct: 1
+            }
+        ];
+
+        let correctAns = 0;  // Count of correctly answered questions
+        let quizPage = 1;  // Current quiz page
+        let currentIndex = 0;  // Index of the current question
+        const ulTag = document.getElementsByTagName('ul')[0];  // Get the answer list element
+        const button = document.getElementById('submit');  // Get the submit button
+        const questionTitle = document.getElementById('question');  // Get the question title element
+        const result = document.getElementById("result");  // Get the result display element
+        const classHighlight = 'selected';  // Class name for selected answers
+
+        // Function to display the questions and answers
+        function showQuestions() {
+            document.getElementById('totalQuiz').innerHTML = questions.length;  // Display total number of questions
+
+            // Reset for a new question
+            if (currentIndex > 0 && currentIndex < questions.length) {
+                ulTag.innerHTML = '';  // Clear previous answers
+                button.innerHTML = 'Submit';  // Reset button text
+                button.className = 'submit';
+                button.id = 'submit';
+                document.getElementById('quizNumber').innerHTML = quizPage;  // Update quiz number
+            }
+
+            // Check if all questions have been answered
+            if (currentIndex === questions.length) {
+                ulTag.innerHTML = '';  // Clear answers
+                questionTitle.innerHTML = '';  // Clear question
+                showResults();  // Show results
+                return;
+            }
+
+            questionTitle.innerHTML = questions[currentIndex].question;  // Display current question
+
+            // Loop through the answers and display them
+            questions[currentIndex].answers.forEach((answer, index) => {
+                const newAns = document.createElement('li');  // Create a new list item for each answer
+                newAns.id = 'ans' + (index + 1);
+                newAns.className = "notSelected";  // Default class
+                newAns.appendChild(document.createTextNode(answer));  // Add the answer text
+                ulTag.appendChild(newAns);  // Append to the answer list
+
+                // Add click event to highlight the selected answer
+                newAns.addEventListener("click", function() {
+                    document.querySelectorAll(".notSelected").forEach(liTag => {
+                        liTag.classList.remove(classHighlight);  // Remove highlight from all
+                    });
+                    newAns.classList.add(classHighlight);  // Highlight selected answer
+                });
+            });
+
+            // Set the button click event to check the answer
+            button.onclick = function() {
+                checkAnswer();
+            };
+        }
+
+        // Function to check the selected answer
+        function checkAnswer() {
+            const selectedItem = document.querySelector(".selected");  // Get the selected answer
+
+            // Ensure an answer has been selected
+            if (!selectedItem) {
+                alert("Please select an answer!");  // Alert if no answer is selected
+                return;
+            }
+
+            const userAns = selectedItem.innerHTML;  // Get the selected answer text
+
+            // Check if the selected answer is correct
+            if (userAns === questions[currentIndex].answers[questions[currentIndex].correct]) {
+                selectedItem.className = 'correct';  // Mark answer as correct
+                correctAns++;  // Increment correct answer count
+                score += 20;  // Update score
+            } else {
+                selectedItem.className = 'wrong';  // Mark answer as wrong
+                ulTag.getElementsByTagName('li')[questions[currentIndex].correct].className = 'correct';  // Highlight the correct answer
+                score -= 10;  // Deduct points for wrong answer
+            }
+
+            document.getElementById("points").innerHTML = score;  // Update score display
+
+            button.innerHTML = 'Next Question';  // Change button text for next question
+            button.className = 'next';  // Change button class
+            button.id = 'next';  // Change button ID for next question
+
+            quizPage++;  // Increment quiz page
+            currentIndex++;  // Move to the next question
+
+            // Set the button click event to show the next question
+            button.onclick = function() {
+                showQuestions();
+            };
+        }
+
+        // Function to handle high score logic
+        function high_score() {
+            const currentHighScore = localStorage.getItem('hs') || 0;  // Get current high score
+
+            // Update high score if current score is higher
+            if (parseInt(currentHighScore) < score) {
+                localStorage.setItem('hs', score);  // Save new high score
+            }
+            document.getElementById("high-score").innerText = localStorage.getItem("hs");  // Display high score
+        }
+
+        // Function to display results at the end of the quiz
+        function showResults() {
+            const message = (score === 200) ? "Congratulations 🎉" : "Try Again";  // Determine message based on score
+            const promotion = `<button onclick="try_again();">Try Again</button>`;  // Button to retry the quiz
+            result.innerHTML = `<h2>${message}</h2> You scored ${correctAns} out of ${questions.length} correctly <br /> You scored ${score} points <br /> ${promotion}`;
+            button.style.display = "none";  // Hide submit button
+            high_score();  // Update high score
+        }
+
+        // Function to reload the quiz
+        function try_again() {
+            location.reload();  // Reload the page to restart the quiz
+        }
+    </script>
+    <script src="server.js"></script>
 </body>
 </html>
