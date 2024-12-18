@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .team {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 70%;
+        height: 10px;
+        border-radius: 5px;
+        outline: none;
+        transition: background 0.3s;
+      }
+
+      .dynamite {
+        background-color: rebeccapurple;
+        /* Red */
+      }
+
+      .newtons-nightmare {
+        background-color: #333;
+        /* Blue */
+      }
+
+      .team-alpha {
+        background-color: orangered;
+        /* Green */
+      }
+
+      .dynamite input[type="range"] {
+        background-color: mediumpurple;
+      }
+
+      .newtons-nightmare input[type="range"] {
+        background-color: gray;
+      }
+
+      .team-alpha input[type="range"] {
+        background-color: orange;
+      }
+
+      .show-results {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.2em;
+        margin: 20px 0;
+        transition: transform 0.2s;
+      }
+
+      .show-results:hover {
+        transform: scale(1.05);
+        background-color: #0056b3;
+      }
+
+      #results {
+        margin-top: 20px;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 0px;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s ease;
+      }
+
+      table {
+        width: calc(100% - 20px);
+        border-collapse: collapse;
+        margin: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Leaderboard</h1>
+      <div class="team dynamite">
+        <span>Dynamite</span>
+        <input type="range" id="dynamitePoints" min="0" max="100" value="0">
+        <span id="dynamiteValue">0</span>
+      </div>
+      <div class="team newtons-nightmare">
+        <span>Newton's Nightmare</span>
+        <input type="range" id="newtonsNightmarePoints" min="0" max="100" value="0">
+        <span id="newtonsNightmareValue">0</span>
+      </div>
+      <div class="team team-alpha">
+        <span>Team Alpha</span>
+        <input type="range" id="teamAlphaPoints" min="0" max="100" value="0">
+        <span id="teamAlphaValue">0</span>
+      </div>
+      <button class="show-results" onclick="showResults()">Show Results</button>
+      <div id="results">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Team</th>
+              <th>🪙</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody">
+            <!-- Results will be populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      // Update value displayed next to sliders
+      document.getElementById('dynamitePoints').oninput = function() {
+        document.getElementById('dynamiteValue').innerText = ` ${this.value}`;
+      };
+      document.getElementById('newtonsNightmarePoints').oninput = function() {
+        document.getElementById('newtonsNightmareValue').innerText = ` ${this.value}`;
+      };
+      document.getElementById('teamAlphaPoints').oninput = function() {
+        document.getElementById('teamAlphaValue').innerText = ` ${this.value}`;
+      };
+
+      function showResults() {
+        const dynamiteScore = parseInt(document.getElementById('dynamitePoints').value);
+        const newtonsNightmareScore = parseInt(document.getElementById('newtonsNightmarePoints').value);
+        const teamAlphaScore = parseInt(document.getElementById('teamAlphaPoints').value);
+        // Alert if any team's score is 0
+        if (dynamiteScore === 0 && newtonsNightmareScore === 0 && teamAlphaScore === 0) {
+          alert("All teams have 0 points!");
+        }
+        // Sorting results
+        const resultsArr = [{
+          name: 'Dynamite',
+          score: dynamiteScore
+        }, {
+          name: 'Newton\'s Nightmare',
+          score: newtonsNightmareScore
+        }, {
+          name: 'Team Alpha',
+          score: teamAlphaScore
+        }, ];
+        resultsArr.sort((a, b) => b.score - a.score);
+        const resultsBody = document.getElementById('resultsBody');
+        resultsBody.innerHTML = ''; // Clear previous results
+        // Track previous score to handle ties
+        let previousScore = null;
+        let positionCount = 0;
+        // Populate table with results
+        resultsArr.forEach((team, index) => {
+          // Determine position using medal emojis for the top three
+          let position;
+          if (team.score === previousScore) {
+            position = ''; // Leave empty for ties
+          } else {
+            positionCount++;
+            switch (positionCount) {
+              case 1:
+                position = ' 🥇'; // Gold Medal
+                break;
+              case 2:
+                position = ' 🥈'; // Silver Medal
+                break;
+              case 3:
+                position = ' 🥉'; // Bronze Medal
+                break;
+              default:
+                position = `${positionCount}`; // Fallback for other positions
+            }
+          }
+          resultsBody.innerHTML += `
+								<tr>
+									<td>${position || '&nbsp;&nbsp;↳'}</td>
+									<td>${team.name}</td>
+									<td>${team.score}</td>
+								</tr>`;
+          previousScore = team.score; // Update previous score
+        });
+        // Expand results div
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.style.height = "auto"; // Expand to full height
+      }
+    </script>
+  </body>
+</html>
