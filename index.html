@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Force - Grade 8 ICSE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Reveal.js (Latest via UNPKG) -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/moon.css" />
+
+  <style>
+    body { font-family: "Segoe UI", sans-serif; }
+    .highlight { color: #07f; font-weight: bold; }
+    .demo-box {
+      width: 100%;
+      height: 300px;
+      background: #121212;
+      border: 2px dashed #444;
+      border-radius: 12px;
+      margin-top: 20px;
+      position: relative;
+    }
+    #touchBox {
+      width: 100px;
+      height: 100px;
+      background: #07f;
+      border-radius: 14px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h1>🧲 Force</h1>
+      <p>Exploring <span class="highlight">Contact</span> & <span class="highlight">Non-contact</span> Forces</p>
+    </section>
+
+    <section>
+      <h2>What is Force?</h2>
+      <ul>
+        <li>Force is a <strong>push</strong> or <strong>pull</strong></li>
+        <li>Can <strong>change motion</strong> or shape of objects</li>
+        <li>Measured in <strong>Newtons (N)</strong></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Types of Forces</h2>
+      <p class="fragment">1. <span class="highlight">Contact Forces</span> – require physical contact</p>
+      <p class="fragment">2. <span class="highlight">Non-contact Forces</span> – act from a distance</p>
+    </section>
+
+    <section>
+      <h2>Contact Forces</h2>
+      <ul>
+        <li>Muscular force while pushing a swing</li>
+        <li>Friction when sliding a book</li>
+        <li>Air resistance slowing a parachute</li>
+      </ul>
+      <div class="demo-box" id="contactDemo">
+        <p>Click the box to simulate muscular push:</p>
+        <div id="touchBox"></div>
+      </div>
+    </section>
+
+    <section data-id="noncontact-slide">
+      <h2>Non-contact Forces</h2>
+      <ul>
+        <li>Magnet attracting paper clips</li>
+        <li>Gravity pulling an apple down</li>
+        <li>Static charge lifting paper</li>
+      </ul>
+      <div class="demo-box" id="matterSim"></div>
+    </section>
+
+    <section>
+      <h2>Let's Recap</h2>
+      <ul>
+        <li>Forces cause motion/change</li>
+        <li>Can be contact or non-contact</li>
+        <li>Examples: Kick (contact), Magnet (non-contact)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Thanks! 👋</h2>
+      <p>Powered by Reveal.js, Matter.js, Flaro.js, and Anime.js</p>
+    </section>
+
+  </div>
+</div>
+
+<!-- Reveal.js -->
+<script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+
+<!-- Flaro -->
+<script src="https://cdn.jsdelivr.net/gh/kode-cat/Flaro@latest/Flaro.js"></script>
+
+<!-- Anime.js -->
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+<!-- Matter.js -->
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+
+<script>
+  // Initialize Reveal
+  const deck = new Reveal();
+  deck.initialize({ hash: true });
+
+  // Animate contact force box
+  document.addEventListener("click", (e) => {
+    if (e.target.id === "touchBox") {
+      anime({
+        targets: "#touchBox",
+        translateX: 250,
+        direction: "alternate",
+        easing: "easeInOutSine",
+        duration: 800
+      });
+    }
+  });
+
+  // Setup Matter.js only when the non-contact slide is active
+  let matterStarted = false;
+  deck.on('slidechanged', event => {
+    if (event.currentSlide.dataset.id === "noncontact-slide" && !matterStarted) {
+      matterStarted = true;
+      startMatterDemo();
+    }
+  });
+
+  function startMatterDemo() {
+    const { Engine, Render, Runner, Bodies, Body, World, Mouse, MouseConstraint } = Matter;
+
+    const engine = Engine.create();
+    const render = Render.create({
+      element: document.getElementById("matterSim"),
+      engine: engine,
+      options: {
+        width: 600,
+        height: 300,
+        wireframes: false,
+        background: "#222"
+      }
+    });
+
+    const ball = Bodies.circle(150, 100, 30, {
+      restitution: 0.9,
+      render: { fillStyle: "#0cf" }
+    });
+
+    const ground = Bodies.rectangle(300, 290, 600, 20, {
+      isStatic: true,
+      render: { fillStyle: "#444" }
+    });
+
+    const wallL = Bodies.rectangle(0, 150, 20, 300, { isStatic: true });
+    const wallR = Bodies.rectangle(600, 150, 20, 300, { isStatic: true });
+
+    World.add(engine.world, [ball, ground, wallL, wallR]);
+
+    const mouse = Mouse.create(render.canvas);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse: mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: { visible: false }
+      }
+    });
+
+    World.add(engine.world, mouseConstraint);
+    render.mouse = mouse;
+
+    Render.run(render);
+    Runner.run(Runner.create(), engine);
+
+    // Apply non-contact force (like gravity/magnet) after 1.5 sec
+    setTimeout(() => {
+      Body.applyForce(ball, ball.position, { x: 0.02, y: -0.03 });
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
