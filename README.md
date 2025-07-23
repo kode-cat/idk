@@ -1,4 +1,9 @@
-# Contact Forces & Moment of Force
+Contact Forces & Moment of Force
+---
+
+**Resources:**
+* PPT: https://kode-cat.github.io/idk
+* Quiz (in progress): https://kode-cat.github.io/idk/quiz
 
 ---
 
@@ -20,12 +25,6 @@
 14. [Quiz Time](#quiz-time)
 15. [Conclusion](#conclusion)
 16. [The End](#the-end)
-
----
-
-**Resources:**
-* PPT: https://kode-cat.github.io/idk
-* Quiz (in progress): https://kode-cat.github.io/idk/quiz
 
 ---
 
