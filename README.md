@@ -17,8 +17,9 @@
 11. [Clockwise vs Anti-Clockwise Moments](#clockwise-vs-anti-clockwise-moments)
 12. [Principle of Moments](#principle-of-moments)
 13. [Summary of Concepts](#summary-of-concepts)
-14. [Quiz Time!](#quiz-time)
+14. [Quiz Time](#quiz-time)
 15. [Conclusion](#conclusion)
+16. [The End](#the-end)
 
 ---
 
@@ -41,7 +42,7 @@
 
 ---
 
-## What Are Contact Forces?
+## What Are Contact Forces
 
 🧲
 
@@ -133,7 +134,7 @@
 
 ---
 
-## What is Moment of Force?
+## What is Moment of Force
 
 🔄
 
