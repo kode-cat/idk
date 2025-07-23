@@ -1,5 +1,10 @@
 *🎤 Full Presentation Script: Contact Forces & Moment of Force*
 ---
+*Resources:*
+* PPT: https://kode-cat.github.io/idk
+* Quiz (in progress): https://kode-cat.github.io/idk/quiz
+---
+
 *🖼️ Slide 1: Title Slide*
 
 *Title: Contact Forces & Moment of Force — Physics in Action!*
