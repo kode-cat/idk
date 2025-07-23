@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact Forces &amp; Moment of Force</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/moon.css" />
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0;}
+    body { font-family: "Segoe UI", "Montserrat", sans-serif; }
+    .reveal .slides { font-size: 1.15em; }
+    h1, h2, h3 { color: #7c18d4; }
+    ul, ol { max-width: 600px; margin: 1.2em auto; }
+    .fragment { margin-bottom: 0.35em; }
+    .sim-row {
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      width: 100%; max-width: 860px; margin: 1.4em auto 1.2em auto;
+      gap: 2vw;
+    }
+    .sim-col {
+      flex: 0 0 320px;
+      max-width: 320px;
+      min-width: 180px;
+      width: 32vw;
+      display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start;
+    }
+    .sim-area {
+      background: #15151a;
+      border-radius: 18px;
+      border: 2px dashed #7c18d4;
+      width: 320px; max-width: 95vw;
+      min-width: 180px; min-height: 180px;
+      height: 180px;
+      box-shadow: 0 3px 24px #7c18d411;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.6em;
+      margin-top: 0.2em;
+      float: right;
+      user-select: none;
+    }
+    .sim-label {
+      color: #7c18d4;
+      font-size: 1em;
+      font-weight: 600;
+      text-align: right;
+      margin-bottom: 3px;
+      margin-top: 2px;
+      letter-spacing: .03em;
+      width: 100%;
+      text-align: right;
+    }
+    .sim-img-canvas {
+      width: 90%; height: 90%;
+      display: block;
+      background: transparent;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.18s;
+      box-shadow: 0 2px 14px #7c18d444;
+    }
+    .sim-right {
+      margin-left: auto; margin-right: 0;
+    }
+    .sim-desc {
+      flex: 1 1 0;
+      min-width: 0;
+      padding-right: 1vw;
+      text-align: left;
+    }
+    ul.sim-points {
+      margin-top: 0.1em;
+    }
+    @media (max-width: 900px) {
+      .sim-row { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0.2em;}
+      .sim-col { max-width: none; min-width: 0; width: 100%; align-items: center; }
+      .sim-area { margin-left: auto; margin-right: auto; min-width: 120px; min-height: 120px; height: 38vw; max-height: 220px;}
+      .sim-label { text-align: center; }
+    }
+    @media (max-width: 540px) {
+      .reveal .slides { font-size: .99em; }
+      .sim-area { min-width: 80px; min-height: 80px; width: 97vw; height: 44vw; max-height: 160px;}
+      .sim-img-canvas { border-radius: 9px;}
+      .sim-label { font-size: 0.93em;}
+    }
+    kbd {font-family:monospace;background:#eee;border-radius:4px;padding:2px 6px;}
+  </style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- Start Slide -->
+    <section>
+      <h1>Contact Forces<br>&amp; Moment of Force</h1>
+      <ul>
+        <li class="fragment">Explore how forces act when objects touch</li>
+        <li class="fragment">See how force can make things turn</li>
+        <li class="fragment">Interactive demos for every concept!</li>
+      </ul>
+    </section>
+
+    <!-- What are Contact Forces -->
+    <section>
+      <h2>Contact Forces</h2>
+      <ul>
+        <li class="fragment">Act only when objects physically touch</li>
+        <li class="fragment">Include push, pull, friction, tension, normal, applied forces</li>
+        <li class="fragment">Can't act at a distance</li>
+      </ul>
+    </section>
+
+    <!-- Muscular Force -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Muscular Force</h2>
+          <ul class="sim-points">
+            <li class="fragment">Produced by muscles (human, animal)</li>
+            <li class="fragment">Used to lift, pull, push, or throw</li>
+            <li class="fragment">Needs direct contact</li>
+            <li class="fragment">Even blinking uses muscular force!</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Muscular Force Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simMuscle" width="170" height="170" tabindex="0" aria-label="Muscular force simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frictional Force -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Frictional Force</h2>
+          <ul class="sim-points">
+            <li class="fragment">Opposes sliding motion between surfaces</li>
+            <li class="fragment">Slows objects down or stops them</li>
+            <li class="fragment">More friction on rough, less on smooth</li>
+            <li class="fragment">Without friction, we'd slide everywhere!</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Friction Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simFriction" width="170" height="170" tabindex="0" aria-label="Friction simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tension Force -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Tension Force</h2>
+          <ul class="sim-points">
+            <li class="fragment">Pulling force in a rope, string or cable</li>
+            <li class="fragment">Acts along the length</li>
+            <li class="fragment">Seen in tug of war, elevators, lifting</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Tension Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simTension" width="170" height="170" tabindex="0" aria-label="Tension simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Normal & Applied Force -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Normal &amp; Applied Force</h2>
+          <ul class="sim-points">
+            <li class="fragment">Applied: Push/pull by a person or object</li>
+            <li class="fragment">Normal: Support force from a surface</li>
+            <li class="fragment">Balance keeps things still (e.g., book on table)</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Normal vs Applied Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simNormal" width="170" height="170" tabindex="0" aria-label="Normal & Applied simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Examples -->
+    <section>
+      <h2>Everyday Examples</h2>
+      <ul>
+        <li class="fragment">Writing: Muscular + Friction</li>
+        <li class="fragment">Swinging: Tension + Gravity</li>
+        <li class="fragment">Kicking ball: Muscular + Friction</li>
+        <li class="fragment">Climbing rope: Tension + Muscular</li>
+      </ul>
+    </section>
+
+    <!-- Simulation: Contact Force -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Simulation: Contact Force</h2>
+          <ul class="sim-points">
+            <li class="fragment">A push moves an object only if touching it</li>
+            <li class="fragment">Try it below!</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Contact Force Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simContact" width="170" height="170" tabindex="0" aria-label="Contact force simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moment of Force -->
+    <section>
+      <h2>Moment of Force</h2>
+      <ul>
+        <li class="fragment">Turning effect of a force (rotates objects)</li>
+        <li class="fragment">Acts around a pivot point</li>
+        <li class="fragment">Moment = Force × Distance from pivot</li>
+        <li class="fragment">Greater distance = greater turning</li>
+      </ul>
+    </section>
+
+    <!-- Lever Simulation -->
+    <section>
+      <div class="sim-row">
+        <div class="sim-desc">
+          <h2>Simulation: Moment/Lever</h2>
+          <ul class="sim-points">
+            <li class="fragment">Apply force far from pivot to turn lever easier</li>
+            <li class="fragment">Try it below!</li>
+          </ul>
+        </div>
+        <div class="sim-col">
+          <div class="sim-label">Lever Demo</div>
+          <div class="sim-area">
+            <canvas class="sim-img-canvas" id="simLever" width="170" height="170" tabindex="0" aria-label="Lever simulation"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clockwise/Anticlockwise -->
+    <section>
+      <h2>Clockwise &amp; Anti-Clockwise Moments</h2>
+      <ul>
+        <li class="fragment">Moment can turn objects clockwise</li>
+        <li class="fragment">Or anti-clockwise (opposite)</li>
+        <li class="fragment">Seesaws and balance scales use both</li>
+      </ul>
+    </section>
+
+    <!-- Principle of Moments -->
+    <section>
+      <h2>Principle of Moments</h2>
+      <ul>
+        <li class="fragment">If object is balanced:</li>
+        <li class="fragment">Total Clockwise Moment = Total Anti-Clockwise Moment</li>
+        <li class="fragment">Used in cranes, playground rides</li>
+      </ul>
+    </section>
+
+    <!-- Summary -->
+    <section>
+      <h2>Summary</h2>
+      <ul>
+        <li class="fragment">Contact forces: Push, pull, friction, tension</li>
+        <li class="fragment">Moment of force: Turning effect, depends on distance</li>
+        <li class="fragment">Both shape our everyday life!</li>
+      </ul>
+    </section>
+
+    <!-- Thanks! -->
+    <section>
+      <h2>Thanks!</h2>
+      <ul>
+        <li class="fragment">Contact forces: Pushing, pulling, stopping</li>
+        <li class="fragment">Moment: Adds rotation and balance</li>
+        <li class="fragment">Physics in action!</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+<script>
+  const deck = new Reveal();
+  deck.initialize({ hash: true, transition: "fade", controls:true, keyboard:true });
+
+  // All simulations use the 'M' key as a shortcut (not told to user, only in code)
+  // You can also click/tap on the demo canvas
+
+  // Utility: responsive scale (170px canvas for all, but scales shapes with width/height)
+  function simScale(canvas, val) {
+    return (val/170) * Math.min(canvas.width, canvas.height);
+  }
+  // --- Muscular force demo: draggable arm pushes a box, box moves and returns automatically ---
+  (function(){
+    const canvas = document.getElementById('simMuscle');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim = null, state = "idle";
+    let boxX = simScale(canvas, 30), armX = simScale(canvas, 20), drag = false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Table
+      ctx.fillStyle="#aaa"; ctx.fillRect(0,simScale(canvas,130),canvas.width,simScale(canvas,16));
+      // Box
+      ctx.fillStyle="#7c18d4";
+      ctx.fillRect(boxX,simScale(canvas,70),simScale(canvas,40),simScale(canvas,40));
+      // Arm
+      ctx.save();
+      ctx.strokeStyle="#e8b900"; ctx.lineWidth=simScale(canvas,10);
+      ctx.beginPath();
+      ctx.moveTo(armX,simScale(canvas,80));
+      ctx.lineTo(boxX-10,simScale(canvas,90));
+      ctx.stroke();
+      ctx.restore();
+      // Face
+      ctx.beginPath();
+      ctx.arc(armX-18,simScale(canvas,78),simScale(canvas,10),0,2*Math.PI);
+      ctx.fillStyle="#ffe0ae"; ctx.fill();
+    }
+    function animatePush() {
+      if(state!=="idle") return;
+      state = "anim";
+      let startBox = boxX, startArm = armX;
+      let endBox = simScale(canvas, 100), endArm = simScale(canvas, 80);
+      let t=0;
+      anim = setInterval(()=>{
+        t+=0.05;
+        boxX = startBox + (endBox-startBox)*Math.min(t,1);
+        armX = startArm + (endArm-startArm)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          setTimeout(autoReturn,700);
+        }
+      },22);
+    }
+    function autoReturn() {
+      let startBox = boxX, startArm = armX;
+      let endBox = simScale(canvas,30), endArm = simScale(canvas,20);
+      let t=0;
+      anim = setInterval(()=>{
+        t+=0.06;
+        boxX = startBox + (endBox-startBox)*Math.min(t,1);
+        armX = startArm + (endArm-startArm)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          state="idle";
+          draw();
+        }
+      },22);
+    }
+    draw();
+    canvas.addEventListener('click', animatePush);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animatePush();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animatePush();
+    });
+    // Interactive: drag arm
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = (e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      if(mx>armX-30 && mx<armX+30 && !drag) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = e.clientX-rect.left;
+      armX = Math.max(simScale(canvas, 10), Math.min(mx, simScale(canvas, 80)));
+      boxX = Math.max(simScale(canvas, 30), armX+simScale(canvas,10));
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animatePush();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animatePush();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+
+  // --- Friction demo: drag to slide block, friction slows it and returns automatically ---
+  (function(){
+    const canvas = document.getElementById('simFriction');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim=null, state="idle";
+    let boxX=simScale(canvas,30), v=0, drag=false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Surface
+      ctx.fillStyle="#969";
+      ctx.fillRect(0,simScale(canvas,130),canvas.width,simScale(canvas,18));
+      // Block
+      ctx.fillStyle="#7c18d4";
+      ctx.fillRect(boxX,simScale(canvas,70),simScale(canvas,40),simScale(canvas,40));
+      // Friction lines
+      ctx.strokeStyle="#fff";
+      for(let i=0;i<7;i++) {
+        ctx.beginPath();
+        ctx.moveTo(boxX+5+i*5,simScale(canvas,113));
+        ctx.lineTo(boxX+5+i*5,simScale(canvas,125));
+        ctx.stroke();
+      }
+    }
+    function animateSlide() {
+      if(state!=="idle") return;
+      state="anim";
+      v=5;
+      anim=setInterval(()=>{
+        boxX+=v;
+        v*=0.92;
+        draw();
+        if(v<0.5 || boxX>simScale(canvas,110)) {
+          clearInterval(anim);
+          setTimeout(autoReturn,500);
+        }
+      },22);
+    }
+    function autoReturn() {
+      let start = boxX, end = simScale(canvas,30), t=0;
+      anim=setInterval(()=>{
+        t+=0.045;
+        boxX = start+(end-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim); state="idle"; draw();
+        }
+      },20);
+    }
+    draw();
+    canvas.addEventListener('click', animateSlide);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animateSlide();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animateSlide();
+    });
+    // Drag to slide
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = (e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      if(mx>boxX && mx<boxX+simScale(canvas,40)) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = e.clientX-rect.left;
+      boxX = Math.max(simScale(canvas, 20), Math.min(mx, simScale(canvas,110)));
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animateSlide();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animateSlide();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+
+  // --- Tension demo: Drag rope to right, rope stretches, returns automatically ---
+  (function(){
+    const canvas = document.getElementById('simTension');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim=null, state="idle";
+    let ropeX=simScale(canvas,120), drag=false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Rope
+      ctx.strokeStyle="#fc0"; ctx.lineWidth=simScale(canvas,8);
+      ctx.beginPath(); ctx.moveTo(simScale(canvas,30),simScale(canvas,90));
+      ctx.lineTo(ropeX,simScale(canvas,90)); ctx.stroke();
+      // Left hand
+      ctx.beginPath(); ctx.arc(simScale(canvas,30),simScale(canvas,90),simScale(canvas,13),0,2*Math.PI);
+      ctx.fillStyle="#ffe0ae"; ctx.fill();
+      // Right hand
+      ctx.beginPath(); ctx.arc(ropeX,simScale(canvas,90),simScale(canvas,13),0,2*Math.PI);
+      ctx.fillStyle="#ffe0ae"; ctx.fill();
+    }
+    function animatePull() {
+      if(state!=="idle") return;
+      state="anim";
+      let start = ropeX, end = simScale(canvas,150), t=0;
+      anim=setInterval(()=>{
+        t+=0.07;
+        ropeX = start+(end-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          setTimeout(autoReturn,600);
+        }
+      },24);
+    }
+    function autoReturn() {
+      let start = ropeX, end = simScale(canvas,120), t=0;
+      anim=setInterval(()=>{
+        t+=0.06;
+        ropeX = start+(end-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim); state="idle"; draw();
+        }
+      },20);
+    }
+    draw();
+    canvas.addEventListener('click', animatePull);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animatePull();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animatePull();
+    });
+    // Drag to pull
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = (e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      if(mx>ropeX-18 && mx<ropeX+18) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = e.clientX-rect.left;
+      ropeX = Math.max(simScale(canvas, 80), Math.min(mx, simScale(canvas, 160)));
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animatePull();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animatePull();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+
+  // --- Normal/Applied demo: drag book down and it bounces up (normal force) ---
+  (function(){
+    const canvas = document.getElementById('simNormal');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim=null, state="idle";
+    let bookY = simScale(canvas,70), drag=false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Table
+      ctx.fillStyle="#aaa"; ctx.fillRect(0,simScale(canvas,130),canvas.width,simScale(canvas,18));
+      // Book
+      ctx.fillStyle="#7c18d4";
+      ctx.fillRect(simScale(canvas,65),bookY,simScale(canvas,40),simScale(canvas,30));
+      // Applied force arrow
+      ctx.strokeStyle="#e8b900"; ctx.lineWidth=simScale(canvas,6);
+      ctx.beginPath();
+      ctx.moveTo(simScale(canvas,85),bookY-12);
+      ctx.lineTo(simScale(canvas,85),bookY+2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(simScale(canvas,85)-5,bookY-2);
+      ctx.lineTo(simScale(canvas,85),bookY+2);
+      ctx.lineTo(simScale(canvas,85)+5,bookY-2);
+      ctx.stroke();
+      // Normal force arrow
+      ctx.strokeStyle="#fc0";
+      ctx.beginPath();
+      ctx.moveTo(simScale(canvas,85),bookY+30+12);
+      ctx.lineTo(simScale(canvas,85),bookY+30-2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(simScale(canvas,85)-5,bookY+30+2);
+      ctx.lineTo(simScale(canvas,85),bookY+30-2);
+      ctx.lineTo(simScale(canvas,85)+5,bookY+30+2);
+      ctx.stroke();
+    }
+    function animateDownUp() {
+      if(state!=="idle") return;
+      state="anim";
+      let start = bookY, down = simScale(canvas,100), t=0;
+      anim=setInterval(()=>{
+        t+=0.08;
+        bookY = start + (down-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          setTimeout(bounceUp,350);
+        }
+      },20);
+    }
+    function bounceUp() {
+      let start = bookY, up = simScale(canvas,70), t=0;
+      anim=setInterval(()=>{
+        t+=0.1;
+        bookY = start + (up-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {clearInterval(anim); state="idle"; draw();}
+      },18);
+    }
+    draw();
+    canvas.addEventListener('click', animateDownUp);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animateDownUp();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animateDownUp();
+    });
+    // Drag to push book
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let my = (e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+      if(my>bookY && my<bookY+simScale(canvas,30)) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let my = e.clientY-rect.top;
+      bookY = Math.max(simScale(canvas,70), Math.min(my, simScale(canvas,110)));
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animateDownUp();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animateDownUp();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+
+  // --- Contact force demo: drag finger to push block ---
+  (function(){
+    const canvas = document.getElementById('simContact');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim=null, state="idle";
+    let boxX = simScale(canvas, 40), fingerX = simScale(canvas, 10), drag=false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Table
+      ctx.fillStyle="#aaa"; ctx.fillRect(0,simScale(canvas,130),canvas.width,simScale(canvas,16));
+      // Block
+      ctx.fillStyle="#7c18d4";
+      ctx.fillRect(boxX,simScale(canvas,70),simScale(canvas,40),simScale(canvas,40));
+      // Finger
+      ctx.beginPath();
+      ctx.arc(fingerX,simScale(canvas,90),simScale(canvas,13),0,2*Math.PI);
+      ctx.fillStyle="#ffe0ae"; ctx.fill();
+    }
+    function animatePush() {
+      if(state!=="idle") return;
+      state = "anim";
+      let startBox = boxX, startFinger = fingerX;
+      let endBox = simScale(canvas, 110), endFinger = simScale(canvas, 85);
+      let t=0;
+      anim = setInterval(()=>{
+        t+=0.06;
+        boxX = startBox + (endBox-startBox)*Math.min(t,1);
+        fingerX = startFinger + (endFinger-startFinger)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          setTimeout(autoReturn,700);
+        }
+      },22);
+    }
+    function autoReturn() {
+      let startBox = boxX, startFinger = fingerX;
+      let endBox = simScale(canvas,40), endFinger = simScale(canvas,10);
+      let t=0;
+      anim = setInterval(()=>{
+        t+=0.065;
+        boxX = startBox + (endBox-startBox)*Math.min(t,1);
+        fingerX = startFinger + (endFinger-startFinger)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          state="idle";
+          draw();
+        }
+      },20);
+    }
+    draw();
+    canvas.addEventListener('click', animatePush);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animatePush();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animatePush();
+    });
+    // Drag to push
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = (e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      if(mx>fingerX-20 && mx<fingerX+20) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = e.clientX-rect.left;
+      fingerX = Math.max(simScale(canvas, 10), Math.min(mx, simScale(canvas, 90)));
+      boxX = fingerX+simScale(canvas,18);
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animatePush();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animatePush();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+
+  // --- Lever demo: drag/pull end to rotate lever, auto returns ---
+  (function(){
+    const canvas = document.getElementById('simLever');
+    if(!canvas) return;
+    let ctx = canvas.getContext('2d'), anim=null, state="idle";
+    let angle = 0, drag=false;
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // Base
+      ctx.fillStyle="#a8a8a8";
+      ctx.fillRect(0,simScale(canvas,130),canvas.width,simScale(canvas,12));
+      // Pivot
+      ctx.beginPath();
+      ctx.arc(simScale(canvas,50),simScale(canvas,130),simScale(canvas,14),0,2*Math.PI);
+      ctx.fillStyle="#fc0"; ctx.fill();
+      // Lever
+      ctx.save();
+      ctx.translate(simScale(canvas,50),simScale(canvas,130));
+      ctx.rotate(angle*Math.PI/180);
+      ctx.fillStyle="#7c18d4";
+      ctx.fillRect(0,-simScale(canvas,8),simScale(canvas,90),simScale(canvas,16));
+      // Arrow for force
+      ctx.beginPath();
+      ctx.moveTo(simScale(canvas,80),-simScale(canvas,18));
+      ctx.lineTo(simScale(canvas,80),-simScale(canvas,8));
+      ctx.lineTo(simScale(canvas,85),-simScale(canvas,13));
+      ctx.moveTo(simScale(canvas,80),-simScale(canvas,8));
+      ctx.lineTo(simScale(canvas,75),-simScale(canvas,13));
+      ctx.lineWidth=simScale(canvas,4); ctx.strokeStyle="#f36"; ctx.stroke();
+      ctx.restore();
+    }
+    function animateTurn() {
+      if(state!=="idle") return;
+      state = "anim";
+      let start = angle, end = -38, t=0;
+      anim = setInterval(()=>{
+        t+=0.06;
+        angle = start + (end-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {
+          clearInterval(anim);
+          setTimeout(autoReturn,700);
+        }
+      },22);
+    }
+    function autoReturn() {
+      let start=angle, end=0, t=0;
+      anim = setInterval(()=>{
+        t+=0.07;
+        angle = start + (end-start)*Math.min(t,1);
+        draw();
+        if(t>=1) {clearInterval(anim); state="idle"; draw();}
+      },22);
+    }
+    draw();
+    canvas.addEventListener('click', animateTurn);
+    canvas.addEventListener('touchstart', e=>{e.preventDefault(); animateTurn();});
+    document.addEventListener('keydown', e=>{
+      if(deck.getCurrentSlide().contains(canvas) && (e.key==="M"||e.key==="m")) animateTurn();
+    });
+    // Drag to rotate
+    canvas.addEventListener("mousedown", e=>{
+      if(state!=="idle") return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = (e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+      let my = (e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+      // drag tip
+      let tipx = simScale(canvas,50)+Math.cos(angle*Math.PI/180)*simScale(canvas,90);
+      let tipy = simScale(canvas,130)+Math.sin(angle*Math.PI/180)*simScale(canvas,90);
+      if(Math.hypot(mx-tipx,my-tipy)<18) drag=true;
+    });
+    document.addEventListener("mousemove", e=>{
+      if(state!=="idle"||!drag) return;
+      let rect = canvas.getBoundingClientRect();
+      let mx = e.clientX-rect.left;
+      let my = e.clientY-rect.top;
+      let dx = mx-simScale(canvas,50), dy=my-simScale(canvas,130);
+      angle = Math.max(-38, Math.min(0, Math.atan2(dy,dx)*180/Math.PI));
+      draw();
+    });
+    document.addEventListener("mouseup", ()=>{
+      if(drag){ drag=false; animateTurn();}
+    });
+    canvas.addEventListener("mouseleave",()=>{ if(drag) { drag=false; animateTurn();}});
+    window.addEventListener('resize', draw);
+    deck.on('slidechanged', ()=>{draw();});
+  })();
+</script>
+</body>
+</html>
