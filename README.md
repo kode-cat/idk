@@ -2,8 +2,8 @@ Contact Forces & Moment of Force
 ---
 
 **Resources:**
-* PPT: https://kode-cat.github.io/idk
-* Quiz (in progress): https://kode-cat.github.io/idk/quiz
+* PPT: [https://kode-cat.github.io/idk](https://kode-cat.github.io/idk)
+* Quiz (in progress): [https://kode-cat.github.io/G-X-plained/quiz](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
