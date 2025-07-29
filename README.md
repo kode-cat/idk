@@ -1,240 +1,310 @@
-Contact Forces & Moment of Force
----
+# 📘 Contact Forces & Moment of Force – Full Script
 
-**Resources:**
-* PPT: [https://kode-cat.github.io/idk/k](https://kode-cat.github.io/idk/k)
-* Quiz (20 questions): [https://kode-cat.github.io/G-X-plained/quiz](https://kode-cat.github.io/G-X-plained/quiz)
+> Let’s push, pull, twist, and turn our way through physics!
 
 ---
 
-## Table of Contents
+**🎒 Resources:**
 
-1. [Title Slide](#title-slide)
-2. [What Are Contact Forces?](#what-are-contact-forces)
-3. [Muscular Force](#muscular-force)
-4. [Frictional Force](#frictional-force)
-5. [Tension Force](#tension-force)
-6. [Normal & Applied Force](#normal--applied-force)
-7. [Quick Real-Life Examples](#quick-real-life-examples)
-8. [Introduction to Moment of Force](#introduction-to-moment-of-force)
-9. [What is Moment of Force?](#what-is-moment-of-force)
-10. [Examples of Moment of Force](#examples-of-moment-of-force)
-11. [Clockwise vs Anti-Clockwise Moments](#clockwise-vs-anti-clockwise-moments)
-12. [Principle of Moments](#principle-of-moments)
-13. [Summary of Concepts](#summary-of-concepts)
-14. [Quiz Time](#quiz-time)
-15. [Conclusion](#conclusion)
-16. [The End](#the-end)
+* [PPT](https://kode-cat.github.io/idk/k): [![Download Latest Version](https://img.shields.io/badge/Download-PPT-blue.svg)](https://github.com/kode-cat/idk/raw/main/Contact-Crew.ppt)
+
+* Quiz (20 Questions): [![Take the Quiz](https://img.shields.io/badge/Take%20the%20Quiz-00ccdd?style=for-the-badge&logo=quizizz&logoColor=white)](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
-## Title Slide
+**📑 Table of Contents**
 
-🎤 **Full Presentation Script: Contact Forces & Moment of Force**
+1. 🎬 Title Slide
 
-### Title: Contact Forces & Moment of Force
 
-**Narration:**
-> "Hey everyone! Today we're exploring the forces you feel, use, and maybe even fight against daily — *Contact Forces*.
->
-> And we'll also uncover a secret weapon of physics… the *Moment of Force* — the science behind opening doors, swinging bats, and more!"
+2. 🧲 What Are Contact Forces?
 
----
 
-## What Are Contact Forces
+3. 💪 Muscular Force
 
-🧲
 
-**Narration:**
-> "Contact forces are forces that occur when two objects physically touch.
->
-> You can't push a box without touching it — that's a contact force!
-> Let's explore them all one by one."
+4. 🛑 Frictional Force
 
----
 
-## Muscular Force
+5. 🧵 Tension Force
 
-💪
 
-**Narration:**
-> "When you lift your school bag, pull a chair, or throw a ball — you're using *muscular force*.
->
-> It's the force produced by your muscles, and it needs direct contact to act."
+6. 🧍 Normal & Applied Forces
 
-> **Fun fact:** Even blinking your eyes uses muscular force!
 
----
+7. 🏃 Real-Life Examples
 
-## Frictional Force
 
-🛑
+8. ⚙️ Intro to Moment of Force
 
-**Narration:**
-> *Friction* is what stops things from sliding forever.
->
-> It opposes motion between two surfaces that touch.
->
-> Try sliding a book on a smooth vs. rough table — which one slows down faster?
 
-> **Fun Fact:** Without friction, we'd slip and slide everywhere!
+9. 🔁 What is Moment of Force?
 
----
 
-## Tension Force
+10. 🔧 Examples of Moments
 
-🧵
 
-**Narration:**
-> "*Tension* is the pulling force in a rope or string.
->
-> Think: Tug of War or lifting a water bucket from a well — the rope carries the force."
+11. 🔄 Clockwise vs Anti-clockwise
+
+
+12. ⚖️ Principle of Moments
+
+
+13. 📚 Summary
+
+
+14. 🧠 Quiz Time
+
+
+15. 🎯 Conclusion
+
+
+16. 🏁 The End
+
+
+
 
 ---
 
-## Normal & Applied Force
+**🎬 Title Slide**
 
-🧍
+🎙️ Narration:
 
-**Narration:**
-> "When you place a book on a table:
-> - Your hand gives an *applied force* to place it.
-> - The table gives a *normal force* upward to support it.
->
-> These two contact forces balance to keep the book still."
+> “Hello everyone! Ever wondered why you don’t fall through your chair? Or how a tiny hand can open a huge door?
 
----
+Today we’ll discover the invisible heroes in action — Contact Forces and Moments of Force. Get ready for some twist-and-turn physics!”
 
-## Quick Real-Life Examples
 
-🤸
 
-**Narration:**
-> "See how almost everything we do involves contact forces?
->
-> - *Activity - Force Involved:*
->   - Writing with a pencil - Muscular + Friction
->   - Swinging on a swing - Tension + Gravity
->   - Kicking a ball - Muscular + Friction
->   - Climbing a rope - Tension + Muscular"
 
 ---
 
-## Introduction to Moment of Force
+**🧲 What Are Contact Forces?**
 
-⚙️
+🎙️ Narration:
 
-**Narration:**
-> "Now let's turn up the power.
-> What makes a door swing open?
-> Why does a seesaw tilt?
->
-> It's all because of the *Moment of Force* — also called the *Turning Effect* of force or *Torque*."
+> “Imagine trying to push your friend… without touching them. That’s a superpower — but not contact force.
+
+Contact forces only happen when two things touch. They’re the reason we can walk, write, and play football!”
+
+
+
 
 ---
 
-## What is Moment of Force
+**💪 Muscular Force**
 
-🔄
+🎙️ Narration:
 
-**Narration:**
-> "The moment of a force is the force's ability to rotate an object around a point.
+> “Every time you blink, carry a bag, or even smile — your muscles are pulling off physics!
+
+Muscular force is your body's personal power supply. No gym required.”
+
+
+
+> 🧠 Fun Fact: Your tongue is one of the strongest muscles in proportion to its size!
+
+
+
+
+---
+
+**🛑 Frictional Force**
+
+🎙️ Narration:
+
+> “Try sliding on a polished floor in socks — wheeee!
+
+Now try it on a carpet — not so fun.
+
+That’s friction, the grip that keeps you grounded.”
+
+
+
+> ⚡ Without friction, we’d all be moonwalking 24/7!
+
+
+
+
+---
+
+**🧵 Tension Force**
+
+🎙️ Narration:
+
+> “Ever played Tug of War? The rope’s under tension!
+
+Tension force is that pull felt in ropes, cables, and even spider webs.
+
+It’s always pulling — never pushing.”
+
+
+
+
+---
+
+**🧍 Normal & Applied Forces**
+
+🎙️ Narration:
+
+> “Place a book on a table.
+
+Your hand applied a force to put it there.
+
+The table pushes back — this is the normal force (aka the table’s way of saying “Not today, gravity!”).
+
+
+Together, they balance the book.”
+
+
+
+
+---
+
+**🏃 Quick Real-Life Examples**
+
+🎙️ Narration:
+
+> “Let’s connect the dots!
+
+* ✏️ Writing = Muscular + Friction
+* ⚽ Kicking a ball = Muscular + Friction
+* 🤸 Swing = Tension + Gravity
+* 🧗 Climbing a rope = Muscular + Tension
+
+
+Almost every action around us is powered by contact forces!”
+
+---
+
+**⚙️ Introduction to Moment of Force**
+
+🎙️ Narration:
+
+> “Here’s a twist — literally.
+
+Ever struggled to open a tight jar lid? Or swung a door wide open with a single finger?
+
+That’s the Moment of Force in action — the twisty cousin of push and pull.”
+
+
+
+
+---
+
+**🔁 What is Moment of Force?**
+
+🎙️ Narration:
+
+> “A moment is a force that causes rotation around a pivot.
 >
-> The formula is simple but powerful:
+> Here’s the formula:
+  ```julia
+  Moment = Force × Perpendicular Distance from Pivot
+  ```
 >
+> The bigger the distance, the easier the turn — just like using a long wrench.”
+
+
+
+
+---
+
+**🔧 Examples of Moment of Force**
+
+🎙️ Narration:
+
+* “🛠️ Opening a door — push near the handle, not the hinge!
+
+* ⚖️ Using a spanner — `longer the handle = easier twist`
+
+* ⚾ Hitting a ball — `hold the bat at the end = stronger swing`
+
+* 🧍 `Standing on a seesaw = moment depends on weight & position`”
+
+
+> 💡 Pro Tip: `Moment = Twist Power!`
+
+
+
+
+---
+
+**🔄 Clockwise vs Anti-Clockwise Moments**
+
+🎙️ Narration:
+
+> “Moments spin in two directions:
+> 
+> Clockwise: like the hands of a clock
+> 
+> Anti-clockwise: the opposite
+
+
+Think of a balance scale. One side goes down ⬇️, the other up ⬆️. That’s moments playing tug-of-war!”
+
+---
+
+**⚖️ Principle of Moments**
+
+🎙️ Narration:
+
+> “Here’s physics’ secret balancing act:
 > ```julia
-> Moment = Force × Perpendicular Distance from Pivot
+>  Clockwise Moment = Anti-Clockwise Moment
 > ```
->
-> The larger the distance, the stronger the turning effect!"
+> If this equation holds, the object stays in perfect balance.
+
+This principle powers cranes, levers, and weighing scales!”
+
+
+
 
 ---
 
-## Examples of Moment of Force
+**📚 Summary**
 
-🛠️
+🎙️ Narration:
 
-**Narration:**
-> - Opening a door — Push near the handle, `far from the hinge = more turning`.
-> - Using a wrench, `Longer handle = more torque`.
-> - Seesaw, Weight and position matter.
-> - Swinging a bat, `Hands near end = better moment`.
->
-> Ever tried opening a door by pushing near the hinge? Hard, right?
-
----
-
-## Clockwise vs Anti-Clockwise Moments
-
-🧪
-
-**Narration:**
-> "Moments can turn objects in two directions:
-> - *Clockwise Moment* – Turns like a clock hand
-> - *Anti-clockwise Moment* – Opposite direction
->
-> Both are used in balance situations, like on a seesaw or balance scale."
+🌯 Let’s wrap it up:
+* Contact Forces:
+  * Involve touch
+  * Push, pull, support
+  * Includes muscular, friction, tension, normal, applied
+* Moment of Force:
+  * A rotating force
+  * Depends on distance from pivot
+  * Used in levers, tools, doors
 
 ---
 
-## Principle of Moments
+🧠 Quiz Time
 
-⚖️
+[![Take the Quiz](https://img.shields.io/badge/Take%20the%20Quiz-00ccdd?style=for-the-badge&logo=quizizz&logoColor=white)](https://kode-cat.github.io/G-X-plained/quiz)
 
-**Narration:**
-> "*If an object is balanced*"
->
-> ```julia
-> Total Clockwise Moment = Total Anti-Clockwise Moment
-> ```
->
-> This is the secret behind weighing machines, cranes, and even playground rides."
 
 ---
 
-## Summary of Concepts
+**🎯 Conclusion**
 
-📚
+🎙️ Narration:
 
-**Narration:**
-> - **Contact Forces vs Moment of Force**
-> - **Contact Forces:**
->   - Require physical touch
->   - Push, pull, oppose
->   - Muscular, friction, etc.
->
-> - **Moment of Force:**
->   - Turning effect of a force
->   - Depends on force & distance
->   - Seen in levers, hinges, tools"
+> “From tying your shoelaces to opening a jam jar — these forces are your invisible assistants.
+
+Contact forces get things done.
+Moments make things move.
+
+Physics isn't just in the lab — it's in your hands. Literally.”
+
+
+
 
 ---
 
-## Quiz Time
+🏁 The End
 
-🧠
+🎉 Thanks for joining the ride — now go test those forces (responsibly)!
+🎓 Stay curious. Stay forceful.
 
-**Sample Questions:**
-1. Which force opposes motion? (*Friction*)
-2. What force is used to lift a bucket by a rope? (*Tension*)
-3. What is the formula for Moment of Force? (*Force × Distance*)
-4. A longer wrench makes work easier. Why? (*Greater moment*)
-
----
-
-## Conclusion
-
-🥳
-
-**Narration:**
-> "*Contact forces* help us interact with the world — pushing, pulling, holding, stopping.
->
-> And the `moment of force` adds rotation and balance to it all.
->
-> These invisible forces shape every action — from writing notes to playing cricket!"
-
----
-
-## The End
 
 ---
