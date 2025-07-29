@@ -3,7 +3,7 @@ Contact Forces & Moment of Force
 
 **Resources:**
 * PPT: [https://kode-cat.github.io/idk/k](https://kode-cat.github.io/idk/k)
-* Quiz (in progress): [https://kode-cat.github.io/G-X-plained/quiz](https://kode-cat.github.io/G-X-plained/quiz)
+* Quiz (20 questions): [https://kode-cat.github.io/G-X-plained/quiz](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
