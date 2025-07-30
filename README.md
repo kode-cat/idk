@@ -6,9 +6,9 @@
 
 **🎒 Resources:**
 
-* [PPT](https://kode-cat.github.io/idk/k): [![Download Latest Version](https://img.shields.io/badge/Download-PPT-blue.svg)](https://github.com/kode-cat/idk/raw/main/Contact-Crew.ppt)
-
-* Quiz (20 Questions): [![Take the Quiz](https://img.shields.io/badge/Take%20the%20Quiz-00ccdd?style=for-the-badge&logo=quizizz&logoColor=white)](https://kode-cat.github.io/G-X-plained/quiz)
+[![Download PPT Latest Version](https://img.shields.io/badge/PPT-Download-red.svg?style=for-the-badge&logo=git)](https://github.com/kode-cat/idk/raw/main/Contact-Crew.ppt)
+[![PPT (WEB)](https://img.shields.io/badge/PPT-WEB-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/G-X-plained/quiz)
+[![Quiz (20 questions)](https://img.shields.io/badge/Quiz-20%20Questions-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
@@ -280,8 +280,7 @@ This principle powers cranes, levers, and weighing scales!”
 
 🧠 Quiz Time
 
-[![Take the Quiz](https://img.shields.io/badge/Take%20the%20Quiz-00ccdd?style=for-the-badge&logo=quizizz&logoColor=white)](https://kode-cat.github.io/G-X-plained/quiz)
-
+[![Quiz (20 questions)](https://img.shields.io/badge/Quiz-20%20Questions-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
