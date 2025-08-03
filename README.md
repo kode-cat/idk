@@ -1,5 +1,4 @@
 # Contact Forces & Moment of Force
-
 ---
 
 ## Table of Contents
@@ -24,8 +23,10 @@
 ---
 
 **Resources:**
-* PPT: https://kode-cat.github.io/idk
-* Quiz (in progress): https://kode-cat.github.io/idk/quiz
+* Repo: [https://github.com/kode-cat/idk](https://github.com/kode-cat/idk)
+* PPT: [https://kode-cat.github.io/idk/k](https://kode-cat.github.io/idk/k)
+* Script: [https://kode-cat.github.io/idk/](https://kode-cat.github.io/idk/)
+* Quiz: [https://kode-cat.github.io/G-X-plained/quiz](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
 
