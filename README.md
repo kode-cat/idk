@@ -9,7 +9,7 @@
 [![Download PPT Latest Version](https://img.shields.io/badge/PPT-Download-red.svg?style=for-the-badge&logo=git)](https://github.com/kode-cat/idk/raw/main/Contact-Crew.ppt)
 [![Git Repo](https://img.shields.io/badge/Git-Repo-red.svg?style=for-the-badge&logo=github&logoColor=red)](https://github.com/kode-cat/idk)
 [![PPT (WEB)](https://img.shields.io/badge/PPT-WEB-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/idk/k)
-[![Script (Web)](https://img.shields.io/badge/Script-Web-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/idk/k)
+[![Script (Web)](https://img.shields.io/badge/Script-Web-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/idk/)
 [![Quiz (20 questions)](https://img.shields.io/badge/Quiz-20%20Questions-red.svg?style=for-the-badge&logo=steam&logoColor=red)](https://kode-cat.github.io/G-X-plained/quiz)
 
 ---
